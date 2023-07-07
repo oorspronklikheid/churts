@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Churts : Customized Heterogeneous Unitary Responsive Transforms. </title>
+</head>
+<style type="text/css">
+		* { margin: 0; padding: 0;}
+	body, html  { height:98%;  width:100%; }
+
+.side {
+   float:left;
+   width:calc(100% - 150px);
+   height:90%;
+}
+
+.right .left {
+   margin-right:-60%;
+   margin-left:0.6%;
+}
+
+
+</style>
+<!-- <script src="https://unpkg.com/mathjs/lib/browser/math.js"></script> -->
+<body   >
+
+			<br>
+	    <div style="width: 100%;height: 90%">
+        <div style="width: calc(100% - 300px) ; height: 100%; float: left">  
+        	<!-- ; background: #20008050; -->
+            <svg id='svgy' width='calc(100%)' height='100%'></svg>
+        </div>
+        <div style=" margin-left: calc(100% - 295px) ; height: 100% ; background: #20008050"> 
+	            	<br>
+								<button id='ipress' onclick='exportfile()'>export</button> <br> 
+								<button id='toolmode' onclick='nexttool()'>line</button> <br><br>
+								<input type="number" id='Duplicate' min=1 max=250>
+								Object Properties : <br>
+								<p id=PropDesc></p>
+
+								<div id='TextProperties' >
+								<details>
+							    <summary>Text</summary>
+							    <textarea onchange='PropertyChangedText("text" , this )' id='PropText' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>Font size </summary>
+							    <textarea onchange='PropertyChangedText("fsize" , this )' id='PropSize' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>x position</summary>
+							    <textarea onchange='PropertyChangedText("xpos" , this )' id='PropXposText' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>y position</summary>
+							    <textarea onchange='PropertyChangedText("ypos" , this )' id='PropYposText' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>rotation angle</summary>
+							    <textarea onchange='PropertyChangedText("rotation" , this )' id='PropRotationText' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>rotation cx</summary>
+							    <textarea onchange='PropertyChangedText("rotX" , this )' id='PropRotXText' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>rotation cy</summary>
+							    <textarea onchange='PropertyChangedText("rotY" , this )' id='PropRotYText' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>skewY</summary>
+							    <textarea onchange='PropertyChangedText("skewY" , this )' id='PropSkewYText' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>skewX</summary>
+							    <textarea onchange='PropertyChangedText("skewX" , this )' id='PropSkewXText' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>fill rgba</summary>
+							    <textarea onchange='PropertyChangedText("fill" , this )' id='PropFillText' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>stroke size</summary>
+							    <textarea onchange='PropertyChangedText("strokesize" , this )' id='PropStrokeSizeText' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>stroke rgba</summary>
+							    <textarea onchange='PropertyChangedText("strokergba" , this )' id='PropStrokergbaText' cols="38" rows="5" value=''></textarea>
+								</details>
+        			</div>
+        			<div id='RectProperties' >
+								<details>
+							    <summary>Width</summary>
+							    <textarea onchange='PropertyChangedRect("width" , this )' id='PropWidthRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>Height</summary>
+							    <textarea onchange='PropertyChangedRect("height" , this )' id='PropHeightRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>x position</summary>
+							    <textarea onchange='PropertyChangedRect("xpos" , this )' id='PropXposRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>y position</summary>
+							    <textarea onchange='PropertyChangedRect("ypos" , this )' id='PropYposRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>rotation angle</summary>
+							    <textarea onchange='PropertyChangedRect("rotation" , this )' id='PropRotationRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>rotation cx</summary>
+							    <textarea onchange='PropertyChangedRect("rotX" , this )' id='PropRotXRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>rotation cy</summary>
+							    <textarea onchange='PropertyChangedRect("rotY" , this )' id='PropRotYRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>skewY</summary>
+							    <textarea onchange='PropertyChangedRect("skewY" , this )' id='PropSkewYRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>skewX</summary>
+							    <textarea onchange='PropertyChangedRect("skewX" , this )' id='PropSkewXRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>rx</summary>
+							    <textarea onchange='PropertyChangedRect("rx" , this )' id='PropRXRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>ry</summary>
+							    <textarea onchange='PropertyChangedRect("ry" , this )' id='PropRYRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>fill rgba</summary>
+							    <textarea onchange='PropertyChangedRect("fill" , this )' id='PropFillRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>stroke size</summary>
+							    <textarea onchange='PropertyChangedRect("strokesize" , this )' id='PropStrokeSizeRect' cols="38" rows="5" value=''></textarea>
+								</details>
+								<details>
+							    <summary>stroke rgba</summary>
+							    <textarea onchange='PropertyChangedRect("strokergba" , this )' id='PropStrokergbaRect' cols="38" rows="5" value=''></textarea>
+								</details>
+        			</div>
+
+        </div>
+    </div>
+
+
+<p id='sometext'> SOME TEXT HERE</p><br>
+</body>
+<script type="text/javascript">
+	
+
+let chartObj = [{}]
+
+let dataSources = {}
+dataSources['source1'] = [1,3,6,10,15,21]
+
+function loop( ) 
+{
+	const t = Date.now();
+	//" t = " + timestampMillis + " ; " +
+	for (var i = 0; i < Things.length; i++) {
+		
+		let n = 0
+
+		if(Things[i].type == 'text')
+		{
+			if(Things[i]['functions'] && Things[i]['functions']['fsize'])
+			{
+				Things[i].fsize = Things[i]['functions']['fsize'].f(t , n , dataSources)
+				updateText(Things[i])
+				updateTextClones(Things[i])
+			}
+			if(Things[i]['functions'] && Things[i]['functions']['text'])
+			{
+				Things[i].text = Things[i]['functions']['text'].f(t , n , dataSources)
+				updateText(Things[i])
+				updateTextClones(Things[i])
+			}
+
+			if(Things[i]['functions'] && Things[i]['functions']['xpos'])
+			{
+				// console.log('updating xpos ')
+				Things[i].x = Things[i]['functions']['xpos'].f(t , n , dataSources)
+				updateText(Things[i])
+				updateTextClones(Things[i])
+			}
+
+			if(Things[i]['functions'] && Things[i]['functions']['ypos'])
+			{
+
+				Things[i].y =   Things[i]['functions']['ypos'].f(t , n , dataSources)
+				updateText(Things[i])
+				updateTextClones(Things[i])
+			}
+			if(Things[i]['functions'] && Things[i]['functions']['rotation'])
+			{
+				Things[i].rotate = Things[i]['functions']['rotation'].f(t , n , dataSources)
+				updateText(Things[i])
+				updateTextClones(Things[i])
+			}
+
+			if(Things[i]['functions'] && Things[i]['functions']['fill'])
+			{
+				Things[i].fill = Things[i]['functions']['fill'].f(t , n , dataSources)
+				updateText(Things[i])
+				updateTextClones(Things[i])
+			}
+			
+			if(Things[i]['functions'] && Things[i]['functions']['strokesize'])
+			{
+				Things[i].strokesize = Things[i]['functions']['strokesize'].f(t , n , dataSources)
+				updateText(Things[i])
+				updateTextClones(Things[i])
+			}
+			
+			if(Things[i]['functions'] && Things[i]['functions']['strokergba'])
+			{
+				Things[i].stroke = Things[i]['functions']['strokergba'].f(t , n , dataSources)
+				updateText(Things[i])
+				updateTextClones(Things[i])
+			}
+
+			if(Things[i]['functions'] && Things[i]['functions']['skewX'])
+			{
+				Things[i].skewX = Things[i]['functions']['skewX'].f(t , n , dataSources)
+				updateText(Things[i])
+				updateTextClones(Things[i])
+			}
+
+			if(Things[i]['functions'] && Things[i]['functions']['skewY'])
+			{
+				Things[i].skewY = Things[i]['functions']['skewY'].f(t , n , dataSources)
+				updateText(Things[i])
+				updateTextClones(Things[i])
+			}
+
+		}
+		if(Things[i].type == 'rectangle')
+		{
+			if(Things[i]['functions'] && Things[i]['functions']['width'])
+			{
+				Things[i].x2 = Things[i].x1 + Things[i]['functions']['width'].f(t , n , dataSources)
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+			if(Things[i]['functions'] && Things[i]['functions']['height'])
+			{
+				Things[i].y2 = Things[i].y1 + Things[i]['functions']['height'].f(t , n , dataSources)
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+
+			if(Things[i]['functions'] && Things[i]['functions']['xpos'])
+			{
+				let width = Things[i].x2 - Things[i].x1 
+				Things[i].x1 = Things[i]['functions']['xpos'].f(t , n , dataSources)
+				Things[i].x2 = Things[i].x1 + width 
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+
+			if(Things[i]['functions'] && Things[i]['functions']['ypos'])
+			{
+				let height = Things[i].y2 - Things[i].y1 
+				Things[i].y1 = (svgy1.clientHeight -  height )/2 -  Things[i]['functions']['ypos'].f(t , n , dataSources)
+				Things[i].y2 = Things[i].y1 + height 
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+			if(Things[i]['functions'] && Things[i]['functions']['rotation'])
+			{
+				Things[i].rotate = Things[i]['functions']['rotation'].f(t , n , dataSources)
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+
+			if(Things[i]['functions'] && Things[i]['functions']['fill'])
+			{
+				Things[i].fill = Things[i]['functions']['fill'].f(t , n , dataSources)
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+			
+			if(Things[i]['functions'] && Things[i]['functions']['strokesize'])
+			{
+				Things[i].strokesize = Things[i]['functions']['strokesize'].f(t , n , dataSources)
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+			
+			if(Things[i]['functions'] && Things[i]['functions']['strokergba'])
+			{
+				Things[i].stroke = Things[i]['functions']['strokergba'].f(t , n , dataSources)
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+			if(Things[i]['functions'] && Things[i]['functions']['rx'])
+			{
+				Things[i].rx = Things[i]['functions']['rx'].f(t , n , dataSources)
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+			if(Things[i]['functions'] && Things[i]['functions']['ry'])
+			{
+				Things[i].ry = Things[i]['functions']['ry'].f(t , n , dataSources)
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+
+			if(Things[i]['functions'] && Things[i]['functions']['skewX'])
+			{
+				Things[i].skewX = Things[i]['functions']['skewX'].f(t , n , dataSources)
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+
+			if(Things[i]['functions'] && Things[i]['functions']['skewY'])
+			{
+				Things[i].skewY = Things[i]['functions']['skewY'].f(t , n , dataSources)
+				updateRect(Things[i])
+				updateRectClones(Things[i])
+			}
+		}
+		// Rect.SVG.firstChild.style.stroke-width =  Rect.strokesize 
+		// Rect.SVG.firstChild.style.stroke = Rect.stroke
+
+
+		updateSnapPoints()
+		move()
+	}
+
+}
+
+let SelectList = []
+let SelectBox ; 
+// let Things = []
+// let Things = []
+// let Circles = []
+let Things = []
+let init = {x:-1 , y:-1}
+let initR = {x:-1 , y:-1}
+let end  = {x:-1 , y:-1}
+let Mousepos = {x:-1 , y:-1} 
+let tool = 'line'
+let	mode = 0
+let currentSnapto = - 1
+let MouseThing ; 
+let SnapPoint = []
+let svgy1 	 = document.getElementById('svgy')
+// let svgy2    = document.getElementById('svgy2')
+// let svgy3    = document.getElementById('svgy3')
+let sometext =  document.getElementById('sometext')
+let toolmode =  document.getElementById('toolmode')
+let TextProperties = document.getElementById('TextProperties')
+let RectProperties = document.getElementById('RectProperties')
+let dataInputs = []
+
+TextProperties.style.display = 'none'
+RectProperties.style.display = 'none'
+console.log(svgy1.clientWidth)
+
+svgy1.insertAdjacentHTML('beforeend' , '<rect x="150" y="5" rx="15" ry="15" width=" calc(100% - 150px)" height=100% style="fill:#80200050;stroke:#707070FF;stroke-width:0.5;opacity:1" />')
+
+svgy1.insertAdjacentHTML('beforeend' , '<rect x="5" y="5" rx="15" ry="15" width=140px height=100% style="fill:#20800050;stroke:#707070FF;stroke-width:0.5;opacity:1" />')
+
+// svgy1.insertAdjacentHTML('beforeend' , '<rect x="' + (svgy1.clientWidth - 145) + '" y="5" rx="15" ry="15" width=143px height=100% style="fill:#20008050;stroke:#707070FF;stroke-width:0.5;opacity:1" />')
+
+
+svgy1.insertAdjacentHTML('beforeend' , '<foreignObject x="20" y="50" width="120" height="150"> ' + 
+                'Math here!<textarea id="test" onchange="updateData2(this)" rows = "5" cols = "15" name = "description"></textarea> </foreignObject>')
+
+let test = document.getElementById('test')
+
+
+svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + 0 +
+ 												 '" cy="' + 0 + 
+ 												 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#440088F0" >')
+
+
+
+  MouseThing= svgy1.lastChild
+
+svgy1.addEventListener("mousemove", (event) => {
+
+	if(event.offsetX < 150)
+		return 
+	// console.log(event.offsetX + ' , ' + event.offsetY )
+	
+	// console.log(event.offsetX)
+	// console.log(event)
+	MouseThing.setAttribute('cx', event.offsetX ) ;
+	MouseThing.setAttribute('cy', event.offsetY ) ;
+
+	if(Things.length > 0 && tool == 'line' )
+	{
+			Things[Things.length -1].SVG.setAttribute("x2" ,  event.offsetX )
+			Things[Things.length -1].SVG.setAttribute("y2" ,  event.offsetY )
+	}
+	if(Things.length > 0 && tool == 'rectangle' && mode == 1  )
+	{
+
+			Things[Things.length -1].x2 =    event.offsetX
+			Things[Things.length -1].y2 =    event.offsetY 
+			updateRect(Things[Things.length -1])
+			updateSnapPoints()
+	}
+
+	if( tool == 'select' && mode == 1 && event.buttons == 0 )
+	{
+
+			// console.log(SelectBox)
+			SelectBox.x2 = event.offsetX
+			SelectBox.y2 = event.offsetY 
+			updateRect(SelectBox)
+	}
+	if( tool == 'select' && event.buttons == 1 )//&& mode == 1 
+	{
+		console.log('moving?' + SelectList.length)
+		for (var i = 0; i < SelectList.length; i++) {
+				SelectList[i].x1 += event.movementX 
+				SelectList[i].y1 += event.movementY 
+				SelectList[i].x2 += event.movementX 
+				SelectList[i].y2 += event.movementY 
+				console.log(SelectList[i])
+
+				if(SelectList[i].type == 'line')
+					updateLine(SelectList[i])
+				if(SelectList[i].type == 'rectangle')
+					updateRect(SelectList[i])
+				
+				// updateSnapPoints()
+				updateSnapPoints()
+				move()
+				updateSnapPoints()
+		}
+			// console.log(SelectBox)
+			// SelectBox.x2 = event.offsetX
+			// SelectBox.y2 = event.offsetY 
+			// updateRect(SelectBox)
+	}
+
+	
+
+
+	currentSnapto = - 1
+	let snapRange = 20 
+	for (var i = 0; i < SnapPoint.length; i++) {
+		
+		if(event.offsetX > SnapPoint[i].x - snapRange  &&
+			event.offsetX < SnapPoint[i].x + snapRange  &&
+			event.offsetY > SnapPoint[i].y - snapRange  &&
+			event.offsetY < SnapPoint[i].y + snapRange   )
+		{
+				currentSnapto = i
+				MouseThing.setAttribute('cx', SnapPoint[i].x ) ;
+				MouseThing.setAttribute('cy', SnapPoint[i].y ) ;
+
+				if(tool == 'line'&&  Things.length > 0 )
+				{
+					Things[Things.length -1].x2 =  SnapPoint[i].x
+					Things[Things.length -1].y2 =  SnapPoint[i].y
+
+					Things[Things.length -1].endref	 = currentSnapto
+					updateLine(Things[Things.length -1])
+					// Things[Things.length -1].SVG.setAttribute("x2" ,  SnapPoint[i].x )
+					// Things[Things.length -1].SVG.setAttribute("y2" ,  SnapPoint[i].y )
+				}if(tool == 'rectangle' &&  Things.length > 0 && mode == 1  )
+				{
+
+					// if(Things[Things.length -1].SnapPointList.includes(currentSnapto))
+					// {
+					// 	console.log('Snap point is self contained!')
+					// }else{
+					// 	console.log('Snap point is not self contained!')
+					// }
+
+					let lastone = Things.length -1 ;
+					Things[lastone].x2 = SnapPoint[i].x
+					Things[lastone].y2 = SnapPoint[i].y
+					if(!Things[Things.length -1].SnapPointList.includes(currentSnapto))
+						Things[lastone].endref	 = currentSnapto
+					else
+						Things[lastone].endref	 = -1
+					// console.log('2')
+					updateRect(Things[lastone]) 
+				}
+		}
+	}
+
+	if(currentSnapto == -1 )
+	{
+		sometext.innerHTML = 'Not snapping' 
+													+ ' , Mode is : ' + mode
+													+ ' , Tool is : ' + tool
+	}else
+	{
+			sometext.innerHTML = 'Snapping to snap point no ' + currentSnapto 
+										+ ' , Mode is : ' + mode 
+										+ ' , Tool is : ' + tool
+	}
+
+});
+function updateData2(item )
+{
+
+	console.log(JSON.parse(item.value) )
+	let data = JSON.parse(item.value)
+	dataSources['source1'] = data 
+
+}
+//onchange="updateData(\'width\' , '+ i + ')
+function updateData(parameter , ThingId , Item) {
+	// console.log(eval(Item.value ))
+	// console.log(Number(Item.value ))
+	const t = Date.now();
+	// " t = " + timestampMillis + " ; " +
+
+	if(parameter == 'width')
+	{
+		const sum = 
+
+// console.log(sum(2, 6));
+		console.log('return ' + Item.value)
+		Things[ThingId].Mathwidth = new Function('t , n , data' , 'return ' + Item.value );
+		// Things[ThingId].Mathwidth = Item.value
+		Things[ThingId].x2 = Things[ThingId].x1 + Things[ThingId].Mathwidth(t,0,dataSources)
+		updateRect(Things[ThingId])
+		// return 
+	}
+	if(parameter == 'height')
+	{
+		console.log('return ' + Item.value)
+		Things[ThingId].Mathheight =  new Function('t , n , data ' , 'return ' + Item.value );
+		Things[ThingId].y2 = Things[ThingId].y1 + Things[ThingId].Mathheight(t,0,dataSources)
+		updateRect(Things[ThingId])
+		// return
+	}
+
+
+	// console.log(Things[ThingId])
+
+}
+
+svgy1.addEventListener("click", (event) => {
+
+  // console.log(mode )
+	if(tool == 'debug')
+	{		
+		console.log(event)
+		console.log(Things)
+	  for (var i = 0; i < Things.length; i++) {
+	  	
+
+			if(Things[i].type == 'rectangle' || Things[i].type == 'text')
+			{
+		  	if(event.target == Things[i].SVG.firstChild )
+		  	{
+		  		console.log( "clicked on ")
+		  		console.log(Things[i])
+	  		}
+	  	}else{
+		  	if(event.target == Things[i].SVG )
+		  	{
+		  		console.log( "clicked on ")
+		  		console.log(Things[i])
+	  				// console.log('what?')
+	  		}
+	  	}
+	  }
+	}
+	if(event.offsetX < 150 )
+	{
+		return 
+	}
+
+	if(tool == 'data')
+	{
+		console.log(tool)
+		// for (var j = 0; j < dataInputs.length; j++) {
+		// 		dataInputs[j].SVG.remove() 
+		// 	}
+		// 	dataInputs = [];
+		
+	  for (var i = 0; i < Things.length; i++) {
+	  	console.log(Things[i].type )
+			if(Things[i].type == 'rectangle')
+			{	
+				if(event.target == Things[i].SVG.firstChild )
+		  	{
+					console.log('rect')
+					TextProperties.style.display = 'none'
+					RectProperties.style.display = 'block'
+		  		updatePropertiesUIRect(i)	  				
+	  		}
+	  	}
+			if(Things[i].type == 'text')
+			{	
+				if(event.target == Things[i].SVG.firstChild )
+		  	{
+					console.log('texted')
+					TextProperties.style.display = 'block'
+					RectProperties.style.display = 'none'
+		  		updatePropertiesUIText(i)	  				
+	  		}
+	  	}
+	  }
+
+	}
+
+	if(tool == 'clone')
+	{
+	// for (var j = 0; j < dataInputs.length; j++) {
+	// 			dataInputs[j].SVG.remove() 
+	// 		}
+	// 		dataInputs = [];
+		
+	  for (var i = 0; i < Things.length; i++) {
+
+			if(Things[i].type == 'rectangle')
+			{	
+				if(event.target == Things[i].SVG.firstChild )
+		  	{
+
+		  		if(Things[i].clones)
+	  			for (var j = 0; j < Things[i].clones.length; j++) {
+	  				Things[i].clones[j].remove()
+	  			}
+	  			Things[i].clones = []; 
+
+		  		console.log(Things[i].SVG)
+		  		let clonecount = document.getElementById('Duplicate').value
+
+		  		const SVG 		 = Things[i].SVG
+					const t = Date.now();
+		  		for (var k = 0; k < clonecount; k++) 
+		  		{
+						const cloneSVG = SVG.cloneNode(true);
+						
+						Things[i].clones.push(cloneSVG)
+						updateRectClones(Things[i]) 
+
+						svgy1.appendChild(cloneSVG)					
+		  		}
+	  		}
+	  	}
+			if(Things[i].type == 'text')
+			{	
+				if(event.target == Things[i].SVG.firstChild )
+		  	{
+
+		  		if(Things[i].clones)
+	  			for (var j = 0; j < Things[i].clones.length; j++) {
+	  				Things[i].clones[j].remove()
+	  			}
+	  			Things[i].clones = []; 
+
+		  		console.log(Things[i].SVG)
+		  		let clonecount = document.getElementById('Duplicate').value
+
+		  		const SVG 		 = Things[i].SVG
+					const t = Date.now();
+		  		for (var k = 0; k < clonecount; k++) 
+		  		{
+						const cloneSVG = SVG.cloneNode(true);
+						
+						Things[i].clones.push(cloneSVG)
+						updateRectClones(Things[i]) 
+
+						svgy1.appendChild(cloneSVG)					
+		  		}
+	  		}
+	  	}
+	  }
+	}
+
+
+
+	let temp = { x:event.offsetX ,
+							 y:event.offsetY  ,
+							 parent:-1}
+
+	if(currentSnapto >=0 ){
+		temp.x = SnapPoint[currentSnapto].x
+		temp.y = SnapPoint[currentSnapto].y
+		temp.parent = currentSnapto 
+	}
+
+
+	// let SelectList = []
+	// let SelectBox ; 
+		
+	if(mode == 1 && tool == 'select')	
+	{
+
+		SelectList = [] 
+		// for (var i = 0; i < Things.length; i++) {
+		// 	console.log(Things[i].SVG.getBBox())
+		// }
+		for (var i = 0; i < Things.length; i++) {
+
+			let boxy = Things[i].SVG.getBBox() 
+			if(SelectBox.x1 < boxy.x  &&
+				 SelectBox.y1 < boxy.y  &&
+				 SelectBox.x2 > boxy.x + boxy.width &&
+				 SelectBox.y2 > boxy.y + boxy.height  )
+				{
+					SelectList.push(Things[i])
+				}
+		}
+		// console.log(SelectList)
+
+
+		if(SelectBox != null)
+			SelectBox.SVG.remove() 
+		mode = 99 
+	}
+
+	if(mode == 0 && tool == 'select')
+	{
+		initR.x = temp.x
+		initR.y = temp.y 
+		initR.parent = currentSnapto 
+		if(SelectBox != null)
+			SelectBox.SVG.remove() 
+		svgy1.insertAdjacentHTML('beforeend' , '<g><rect x="' + initR.x 
+												+ '" y="' + initR.y 
+												+ '" width="' + (temp.x - initR.x )
+												+ '" height="' + (temp.y - initR.y )
+												+ '" style="stroke:rgba(100,100,200,0.8);stroke-width:2;fill:rgba(0,100,200,0.2)" /></g>')
+		SelectBox = ({x1:initR.x , y1:initR.y , 
+										x2:end.x 	, y2:end.y , 
+										startref:temp.parent, endref:temp.parent ,  
+										SVG:svgy1.lastChild}) 
+	
+		mode = 1
+	}
+
+	updateSnapPoints()
+	if(mode == 0 && tool == 'line')
+	{
+			init.x = temp.x
+			init.y = temp.y 
+			init.parent = currentSnapto 
+			svgy1.insertAdjacentHTML('beforeend' , '<line x1="' + init.x 
+													+ '" y1="' + init.y 
+													+ '" x2="' + temp.x 
+													+ '" y2="' + temp.y 
+													+ '" style="stroke:rgb(100,100,100);stroke-width:1" />')
+			Things.push({x1:init.x , y1:init.y , 
+								x2:end.x , y2:end.y , 
+								startref:temp.parent, endref:temp.parent ,  
+								SVG:svgy1.lastChild , type:'line'})
+			console.log(Things[Things.length -1])
+
+			
+			// mode = 1; 
+	}
+
+
+	if(mode == 0 && tool == 'text')
+	{
+			initR.x = temp.x
+			initR.y = temp.y 
+			initR.parent = currentSnapto 
+			//  <rect x="50" y="20" width="150" height="150" />
+			svgy1.insertAdjacentHTML('beforeend' , '<g><text x="' + initR.x 
+													+ '" y="' + initR.y 
+													+ '" style="stroke:rgb(100,100,100);stroke-width:1;fill:rgba(0,100,100,0.05)"> Insert Text HERE </text></g>')
+
+			console.log('lengthy ' + Things.length)
+				let x1 = initR.x 
+				let y1 = initR.y
+				let rectsvg = svgy1.lastChild
+
+				Things.push({ x:initR.x , y:initR.y , 
+									startref:temp.parent, endref:temp.parent ,  
+									SVG:rectsvg , type:'text' , rotate:0 })
+
+	}
+	if(mode == 2 && tool == 'rectangle')
+	{
+		mode = 0
+	}
+	if(mode == 1 && tool == 'rectangle')
+	{
+		mode = 2 
+	}
+	if(mode == 0 && tool == 'rectangle')
+	{
+			initR.x = temp.x
+			initR.y = temp.y 
+			initR.parent = currentSnapto 
+			//  <rect x="50" y="20" width="150" height="150" />
+			svgy1.insertAdjacentHTML('beforeend' , '<g><rect x="' + initR.x 
+													+ '" y="' + initR.y 
+													+ '" width="' + (temp.x - initR.x )
+													+ '" height="' + (temp.y - initR.y )
+													+ '" style="stroke:rgb(100,100,100);stroke-width:1;fill:rgba(0,100,100,0.05)" /></g>')
+
+			// console.log(Things[Things.length -1])
+			console.log('lengthy ' + Things.length)
+			mode = 1; 
+
+				let x1 = initR.x 
+				let x2 = end.x
+				let y1 = initR.y
+				let y2 = end.y
+				let SnapPointList = []
+				let rectsvg = svgy1.lastChild
+
+				svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + x1 + '" cy="' + y1 + 
+											 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+				SnapPoint.push( { r:6 ,  x:x1 , y:y1 ,  name:'label' , 
+		 									SVG:svgy1.lastChild } )
+				SnapPointList.push(SnapPoint.length - 1 )
+
+				svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + x2 + '" cy="' + y1 + 
+											 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+				SnapPoint.push( { r:6 ,  x:x2 , y:y1 ,  name:'label' , 
+		 									SVG:svgy1.lastChild } )
+				SnapPointList.push(SnapPoint.length - 1 )
+
+				svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + x1 + '" cy="' + y2 + 
+											 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+				SnapPoint.push( { r:6 ,  x:x1 , y:y2 ,  name:'label' , 
+		 									SVG:svgy1.lastChild } )
+				SnapPointList.push(SnapPoint.length - 1 )
+
+				svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + x2 + '" cy="' + y2 + 
+											 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+				SnapPoint.push( { r:6 ,  x:x2 , y:y2 ,  name:'label' , 
+		 									SVG:svgy1.lastChild } )
+				SnapPointList.push(SnapPoint.length - 1 )
+
+				svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + (x1 + x2)/2 + '" cy="' + y1 + 
+											 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+				SnapPoint.push( { r:6 ,  x:(x1 + x2)/2 , y:y1 ,  name:'label' , 
+		 									SVG:svgy1.lastChild } )
+				SnapPointList.push(SnapPoint.length - 1 )
+
+				svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + x1 + '" cy="' + (y1 + y2)/2 + 
+											 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+				SnapPoint.push( { r:6 ,  x:x1 , y:(y1 + y2)/2 ,  name:'label' , 
+		 									SVG:svgy1.lastChild } )
+				SnapPointList.push(SnapPoint.length - 1 )
+
+				svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + x2 + '" cy="' + (y1 + y2)/2 + 
+											 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+				SnapPoint.push( { r:6 ,  x:x2 , y:(y1 + y2)/2 ,  name:'label' , 
+		 									SVG:svgy1.lastChild } )
+				SnapPointList.push(SnapPoint.length - 1 )
+
+				svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + (x1 + x2)/2 + '" cy="' + y2 + 
+											 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+				SnapPoint.push( { r:6 ,  x:(x1 + x2)/2 , y:y2 ,  name:'label' , 
+		 									SVG:svgy1.lastChild } )
+				SnapPointList.push(SnapPoint.length - 1 )
+
+				svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + (x1 + x2)/2 + '" cy="' + (y1 + y2 )/2 + 
+											 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+				SnapPoint.push( { r:6 ,  x:(x1 + x2)/2 , y:(y1 + y2 )/2 ,  name:'label' , 
+		 									SVG:svgy1.lastChild } )
+				SnapPointList.push(SnapPoint.length - 1 )
+
+				Things.push({ x1:initR.x , y1:initR.y , 
+									x2:end.x   , y2:end.y , 
+									startref:temp.parent, endref:temp.parent ,  
+									SVG:rectsvg , type:'rectangle' , rotate:0 ,
+									SnapPointList:SnapPointList })
+
+	}
+
+
+	if(mode==99 )
+		mode = 0
+});
+
+function updateSnapPoints()
+{
+			// SelectBox.SVG.remove() 
+			// for (var i = 0; i < SnapPoint.length; i++) {
+			// 	SnapPoint[i].SVG.remove() 
+			// }
+			// SnapPoint = []
+			for (var i = 0; i < Things.length; i++) {
+				let x1 = Things[i].x1
+				let x2 = Things[i].x2
+				let y1 = Things[i].y1
+				let y2 = Things[i].y2
+				
+				if(Things[i].type	 == 'line')
+				{
+					// svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + x1 + '" cy="' + y1 + 
+					// 							 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+					// SnapPoint.push( { r:6 ,  x:x1 , y:y1 ,  name:'label'+i+j*6 , 
+			 		// 							SVG:svgy1.lastChild } )
+
+					// svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + x2 + '" cy="' + y2 + 
+					// 							 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+					// SnapPoint.push( { r:6 ,  x:x2 , y:y2 ,  name:'label'+i+j*6 , 
+			 		// 							SVG:svgy1.lastChild } )
+
+					// svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + (x1 + x2)/2 + '" cy="' + (y1 + y2)/2 + 
+					// 							 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+					// SnapPoint.push( { r:6 ,  x:(x1 + x2)/2 , y:(y1 + y2)/2 ,  name:'label'+i+j*6 , 
+			 		// 							SVG:svgy1.lastChild } )
+
+				}
+				if(Things[i].type	 == 'rectangle')
+				{
+
+					// console.log('Updating '+Things[i].SnapPointList[1])
+					// console.log(SnapPoint[Things[i].SnapPointList[1] ])
+					SnapPoint[Things[i].SnapPointList[0] ].x = Things[i].x1
+					SnapPoint[Things[i].SnapPointList[0] ].y = Things[i].y1
+					updateCircle(SnapPoint[Things[i].SnapPointList[0] ]) 
+
+					SnapPoint[Things[i].SnapPointList[1] ].x = Things[i].x2
+					SnapPoint[Things[i].SnapPointList[1] ].y = Things[i].y1
+					updateCircle(SnapPoint[Things[i].SnapPointList[1] ]) 
+
+					SnapPoint[Things[i].SnapPointList[2] ].x = Things[i].x1
+					SnapPoint[Things[i].SnapPointList[2] ].y = Things[i].y2
+					updateCircle(SnapPoint[Things[i].SnapPointList[2] ]) 
+
+					SnapPoint[Things[i].SnapPointList[3] ].x = Things[i].x2
+					SnapPoint[Things[i].SnapPointList[3] ].y = Things[i].y2
+					updateCircle(SnapPoint[Things[i].SnapPointList[3] ]) 
+
+					SnapPoint[Things[i].SnapPointList[4] ].x = (Things[i].x1 + Things[i].x2) /2
+					SnapPoint[Things[i].SnapPointList[4] ].y = Things[i].y1
+					updateCircle(SnapPoint[Things[i].SnapPointList[4] ]) 
+
+					SnapPoint[Things[i].SnapPointList[5] ].x = Things[i].x1
+					SnapPoint[Things[i].SnapPointList[5] ].y = (Things[i].y1 + Things[i].y2) /2
+					updateCircle(SnapPoint[Things[i].SnapPointList[5] ]) 
+
+					SnapPoint[Things[i].SnapPointList[6] ].x = Things[i].x2
+					SnapPoint[Things[i].SnapPointList[6] ].y = (Things[i].y1 + Things[i].y2) /2
+					updateCircle(SnapPoint[Things[i].SnapPointList[6] ]) 
+
+					SnapPoint[Things[i].SnapPointList[7] ].x =  (Things[i].x1 + Things[i].x2) /2
+					SnapPoint[Things[i].SnapPointList[7] ].y =  Things[i].y2
+					updateCircle(SnapPoint[Things[i].SnapPointList[7] ]) 
+
+					SnapPoint[Things[i].SnapPointList[8] ].x = (Things[i].x1 + Things[i].x2) /2
+					SnapPoint[Things[i].SnapPointList[8] ].y = (Things[i].y1 + Things[i].y2) /2
+					updateCircle(SnapPoint[Things[i].SnapPointList[8] ]) 
+					// move() 
+				}
+				// Things[i]
+			}
+
+}
+function updateCircle(Circle) 
+{
+		Circle.SVG.setAttribute('cx' , Circle.x)
+		Circle.SVG.setAttribute('cy' , Circle.y)
+}
+
+function updateRectClones(Rect) 
+{
+
+		let cH = svgy1.clientHeight //client height
+		let mH = cH /2  //miidle height 
+		const t = Date.now();
+		if(Rect.clones)
+		for (var i = 0; i < Rect.clones.length; i++) {
+			// Rect.clones[i]
+			let x2 = -1
+			let x1 = -1 
+			let y2 = -1
+			let y1 = -1 
+			let w = -1
+			let h = -1
+
+
+			if(Rect['functions'] && Rect['functions']['xpos'] ) {
+				x1 = Rect['functions']['xpos'].f(t , i + 1 , dataSources)
+			}
+			if(Rect['functions'] && Rect['functions']['height'] ) {
+				h = Rect['functions']['height'].f(t , i + 1 , dataSources) 
+			}
+			if(Rect['functions'] && Rect['functions']['ypos'] ) {
+				y1 = mH - h/2  - Rect['functions']['ypos'].f(t , i + 1 , dataSources)
+				y2 = y1 + h
+			}
+			if(Rect['functions'] && Rect['functions']['width'] ) {
+				w = Rect['functions']['width'].f(t , i + 1 , dataSources) 
+				x2 = x1 + w
+			}
+				Rect.clones[i].firstChild.setAttribute("height",  Math.abs(h) ) 
+				Rect.clones[i].firstChild.setAttribute("width" , Math.abs(w) )
+				Rect.clones[i].firstChild.setAttribute("y"		 , Math.min(y2,y1) )
+				Rect.clones[i].firstChild.setAttribute("x"		 ,  Math.min(x1) )
+			let rotatestr = "" 
+			let skew = " "
+			
+			if(Rect['functions'] && Rect['functions']['rotation'] ) {
+				rotatestr = "rotate(" + Rect['functions']['rotation'].f(t , i + 1 , dataSources)+ ' ' + (x1 + x2)/2 + ' ' + (y1 + y2)/2 + ") "
+				
+			}
+			let skewstart = `translate(${((x1 + x2)/2)},${((y1 + y2)/2)})`
+			let skewstop  = `translate(${( (x1 + x2)/-2)},${((y1 + y2)/-2)})`
+			if(Rect['functions'] && Rect['functions']['skewX'] ) {
+				skew += `  skewX(${Rect['functions']['skewX'].f(t , i + 1 , dataSources) })  `
+				
+			}
+			if(Rect['functions'] && Rect['functions']['skewY'] ) {
+				skew += `skewY(${Rect['functions']['skewY'].f(t , i + 1 , dataSources) })`
+			}
+			skew=  skewstart + skew  + skewstop
+			Rect.clones[i].firstChild.setAttribute("transform", rotatestr + skew )
+
+
+			if(Rect['functions'] && Rect['functions']['fill'] ) {
+				Rect.clones[i].firstChild.style.fill= Rect['functions']['fill'].f(t , i + 1 , dataSources)  
+			}
+
+
+			if(Rect['functions'] && Rect['functions']['strokesize'] ) {
+				Rect.clones[i].firstChild.style.strokeWidth= Rect['functions']['strokesize'].f(t , i + 1 , dataSources)  
+			}
+			if(Rect['functions'] && Rect['functions']['strokergba'] ) {
+				Rect.clones[i].firstChild.style.stroke= Rect['functions']['strokergba'].f(t , i + 1 , dataSources)  
+			}
+			if(Rect['functions'] && Rect['functions']['rx'] ) {
+				Rect.clones[i].firstChild.setAttribute("rx",  Rect['functions']['rx'].f(t , i + 1 , dataSources) ) 
+			}
+			if(Rect['functions'] && Rect['functions']['ry'] ) {
+				Rect.clones[i].firstChild.setAttribute("ry",  Rect['functions']['ry'].f(t , i + 1 , dataSources) ) 
+			}
+
+	// Rect.SVG.firstChild.style.strokeWidth =  Rect.strokesize 
+	// 	Rect.SVG.firstChild.style.stroke = Rect.stroke
+	// 	Rect.SVG.firstChild.setAttribute("rx" ,  Rect.rx )
+	// 	Rect.SVG.firstChild.setAttribute("ry" ,  Rect.ry )
+
+
+	}
+
+}
+	// function updateRect(Rect) 
+	// {
+	// 		Rect.SVG.firstChild.setAttribute("x" ,  Math.min(Rect.x1,Rect.x2) )
+	// 		Rect.SVG.firstChild.setAttribute("y" ,  Math.min(Rect.y1,Rect.y2) )
+	// 		Rect.SVG.firstChild.setAttribute("width" ,  Math.abs(Rect.x2 - Rect.x1)) 
+	// 		Rect.SVG.firstChild.setAttribute("height",  Math.abs(Rect.y2 - Rect.y1))
+
+	// 		Rect.SVG.firstChild.style.fill = Rect.fill 
+			
+	// 		Rect.SVG.firstChild.style.strokeWidth =  Rect.strokesize 
+	// 		Rect.SVG.firstChild.style.stroke = Rect.stroke
+
+	// 		Rect.SVG.firstChild.setAttribute("rx" ,  Rect.rx )
+	// 		Rect.SVG.firstChild.setAttribute("ry" ,  Rect.ry )
+	    
+
+	// 		let rot = "rotate(" +  Rect.rotate + ' ' + (Rect.x1 + Rect.x2)/2 + ' ' + (Rect.y1 + Rect.y2)/2 + ")"
+	// 		let skew = ''
+
+	// 		if(Rect.skewX)
+	// 		 skew += ` translate(${(Rect.x1 + Rect.x2)/2}, ${(Rect.y1 + Rect.y2)/2 }) skewX(${Rect.skewX} )  translate(${-1*(Rect.x1 + Rect.x2)/2}, ${-1*(Rect.y1 + Rect.y2)/2 })`
+	// 		if(Rect.skewY)
+	// 		 skew += ` translate(${(Rect.x1 + Rect.x2)/2}, ${(Rect.y1 + Rect.y2)/2 }) skewY(${Rect.skewY}) translate(${-1*(Rect.x1 + Rect.x2)/2}, ${-1*(Rect.y1 + Rect.y2)/2 })`
+
+	// 		Rect.SVG.firstChild.setAttribute("transform", rot+skew )
+	// 		// console.log(Rect)
+
+	// }
+function updateTextClones(Text) 
+{
+		const t = Date.now();
+		if(Text.clones)
+		for (var i = 0; i < Text.clones.length; i++) {
+
+			let x = -1 
+			let y = -1 
+
+		
+			if(Text['functions'] && Text['functions']['fsize'] ) {
+
+				Text.clones[i].firstChild.setAttribute("font-size", Text['functions']['fsize'].f(t , i + 1 , dataSources) )
+				// console.log(Text.clones[i].firstChild)
+			}
+			if(Text['functions'] && Text['functions']['text'] ) {
+
+				Text.clones[i].firstChild.innerHTML =  Text['functions']['text'].f(t , i + 1 , dataSources) 
+				// console.log(Text.clones[i].firstChild)
+			}
+			if(Text['functions'] && Text['functions']['xpos'] ) {
+				Text.clones[i].firstChild.setAttribute("x" ,  Text['functions']['xpos'].f(t , i + 1 , dataSources) )
+			}
+			if(Text['functions'] && Text['functions']['ypos'] ) {
+				Text.clones[i].firstChild.setAttribute("y" , Text['functions']['ypos'].f(t , i + 1 , dataSources) )
+			}
+			let rotatestr = "" 
+			let skew = " "
+			
+			if(Text['functions'] && Text['functions']['rotation'] ) {
+				rotatestr = "rotate(" + Text['functions']['rotation'].f(t , i + 1 , dataSources)+ ' ' + x + ' ' + y + ") "
+				
+			}
+			let skewstart = `translate(${(x)},${(y)})`
+			let skewstop  = `translate(${(x)},${(y)})`
+			if(Text['functions'] && Text['functions']['skewX'] ) {
+				skew += `  skewX(${Text['functions']['skewX'].f(t , i + 1 , dataSources) })  `
+				
+			}
+			if(Text['functions'] && Text['functions']['skewY'] ) {
+				skew += `skewY(${Text['functions']['skewY'].f(t , i + 1 , dataSources) })`
+			}
+			skew=  skewstart + skew  + skewstop
+			Text.clones[i].firstChild.setAttribute("transform", rotatestr + skew )
+
+
+			if(Text['functions'] && Text['functions']['fill'] ) {
+				Text.clones[i].firstChild.style.fill= Text['functions']['fill'].f(t , i + 1 , dataSources)  
+			}
+
+
+			if(Text['functions'] && Text['functions']['strokesize'] ) {
+				Text.clones[i].firstChild.style.strokeWidth= Text['functions']['strokesize'].f(t , i + 1 , dataSources)  
+			}
+			if(Text['functions'] && Text['functions']['strokergba'] ) {
+				Text.clones[i].firstChild.style.stroke= Text['functions']['strokergba'].f(t , i + 1 , dataSources)  
+			}
+
+		// Text.SVG.firstChild.style.strokeWidth =  Text.strokesize 
+		// Text.SVG.firstChild.style.stroke = Text.stroke
+
+
+	}
+
+}
+function updateRect(Rect) 
+{
+
+		Rect.SVG.firstChild.setAttribute("x" , Math.min(Rect.x1,Rect.x2) )
+		Rect.SVG.firstChild.setAttribute("y" ,  Math.min(Rect.y1,Rect.y2) )
+		Rect.SVG.firstChild.setAttribute("width" , Math.abs(Rect.x2 - Rect.x1)) 
+		Rect.SVG.firstChild.setAttribute("height", Math.abs(Rect.y2 - Rect.y1))
+
+		Rect.SVG.firstChild.style.fill = Rect.fill 
+		
+		Rect.SVG.firstChild.style.strokeWidth =  Rect.strokesize 
+		Rect.SVG.firstChild.style.stroke = Rect.stroke
+
+		Rect.SVG.firstChild.setAttribute("rx" ,  Rect.rx )
+		Rect.SVG.firstChild.setAttribute("ry" ,  Rect.ry )
+    	
+
+		let rot = "rotate(" +  Rect.rotate + ' ' + (Rect.x1 + Rect.x2)/2 + ' ' + (Rect.y1 + Rect.y2)/2 + ")"
+		let skew = ''
+
+		if(Rect.skewX)
+		 skew += ` translate(${(Rect.x1 + Rect.x2)/2}, ${(Rect.y1 + Rect.y2)/2 }) skewX(${Rect.skewX} )  translate(${-1*(Rect.x1 + Rect.x2)/2}, ${-1*(Rect.y1 + Rect.y2)/2 })`
+		if(Rect.skewY)
+		 skew += ` translate(${(Rect.x1 + Rect.x2)/2}, ${(Rect.y1 + Rect.y2)/2 }) skewY(${Rect.skewY}) translate(${-1*(Rect.x1 + Rect.x2)/2}, ${-1*(Rect.y1 + Rect.y2)/2 })`
+
+		Rect.SVG.firstChild.setAttribute("transform", rot+skew )
+		// console.log(Rect)
+
+}
+function updateText(Text)
+{
+
+		// console.log(Text.x)
+		Text.SVG.firstChild.setAttribute("x" , Text.x)
+		Text.SVG.firstChild.setAttribute("y" , Text.y)
+		Text.SVG.firstChild.setAttribute("font-size" , Text.fsize)
+
+		Text.SVG.firstChild.style.fill = Text.fill 
+		Text.SVG.firstChild.style.strokeWidth =  Text.strokesize 
+		Text.SVG.firstChild.style.stroke = Text.stroke
+
+
+		Text.SVG.firstChild.innerHTML = Text.text
+
+		let rot = "rotate(" +  Text.rotate + ' ' + Text.x + ' ' + Text.y + ")"
+		let skew = ''
+
+		if(Text.skewX)
+		 skew += ` translate(${(Text.x )}, ${(Text.y) }) skewX(${Text.skewX} )  translate(${-1*(Text.x)}, ${-1*(Text.y) })`
+		if(Text.skewY)
+		 skew += ` translate(${(Text.x )}, ${(Text.y) }) skewY(${Text.skewY}) translate(${-1*(Text.x)}, ${-1*(Text.y) })`
+
+		Text.SVG.firstChild.setAttribute("transform", rot+skew )
+
+}
+function updateLine(Line) 
+{
+		Line.SVG.setAttribute('x1' , Line.x1)
+		Line.SVG.setAttribute('y1' , Line.y1)
+		Line.SVG.setAttribute('x2' , Line.x2)
+		Line.SVG.setAttribute('y2' , Line.y2)
+}
+
+function nexttool() 
+{
+	mode = 0
+	let tools = [ 'text'  ,  'rectangle'  , 'data' , 'clone', 'debug', 'select' , 'line' ]
+
+	let toolIndex =  (tools.indexOf(tool ) + 1) % tools.length
+	tool = tools[toolIndex]
+	toolmode.innerHTML = tool
+	return 
+}
+function getDefaultSetting(setting)
+{
+	if(setting == 'rectangleFill')
+		return "fill:rgba(0,100,100,0.05)"
+
+}
+function getSetting(setting)
+{
+		// console.log(setting)
+		let val = localStorage.getItem(setting) 
+		if(val == null )
+			val =  getDefaultSetting(setting)
+
+		console.log(val)
+		return val 
+}
+function setSetting(setting , value)
+{
+		localStorage.setItem(setting , value) 
+}
+function PropertyChangedRect(property, element )
+{
+	let i = element.getAttribute('index')
+	const f = new Function('t , n , data' , 'return ' + element.value )
+	Things[i]['functions'][property] = { str:element.value , f:f   }
+
+}
+function PropertyChangedText(property, element )
+{
+	let i = element.getAttribute('index')
+	const f = new Function('t , n , data' , 'return ' + element.value )
+	Things[i]['functions'][property] = { str:element.value , f:f   }
+
+}
+function updatePropertiesUIText(i) {
+
+			let PropDesc  			= document.getElementById('PropDesc')
+			let PropText				= document.getElementById('PropText') /// this one 
+			let PropXpos  			= document.getElementById('PropXposText')
+			let PropYpos  			=	document.getElementById('PropYposText')
+			let PropRotation  	= document.getElementById('PropRotationText')
+			let PropRotX  			= document.getElementById('PropRotXText')
+			let PropRotY  			= document.getElementById('PropRotYText')
+			let PropSkewY  			= document.getElementById('PropSkewYText')
+			let PropSkewX  			= document.getElementById('PropSkewXText')
+			let PropFill  			= document.getElementById('PropFillText')
+			let PropStrokeSize  = document.getElementById('PropStrokeSizeText')
+			let PropStrokergba  = document.getElementById('PropStrokergbaText')
+
+			PropText.setAttribute(		'index', i)
+			PropSize.setAttribute(		'index', i)
+			PropXpos.setAttribute(		'index', i)
+			PropYpos.setAttribute(		'index', i)
+			PropRotation.setAttribute('index', i)
+			PropRotX.setAttribute(		'index', i)
+			PropRotY.setAttribute(		'index', i)
+			PropSkewY.setAttribute(		'index', i)
+			PropSkewX.setAttribute(		'index', i)
+			PropFill.setAttribute(		'index', i)
+			PropStrokeSize.setAttribute('index', i)
+			PropStrokergba.setAttribute('index', i)
+
+			PropDesc.innerHTML = 'ID =  ' + i + '<br> Type = ' + Things[i].type + '<br><br>'
+
+			if(!Things[i]['functions'])
+			{
+				Things[i]['functions'] = {}
+			}
+}
+function updatePropertiesUIRect(i) {
+			let PropDesc  			= document.getElementById('PropDesc')
+			let PropWidth  			=	document.getElementById('PropWidthRect')
+			let PropHeight  		= document.getElementById('PropHeightRect')
+			let PropXpos  			= document.getElementById('PropXposRect')
+			let PropYpos  			=	document.getElementById('PropYposRect')
+			let PropRotation  	= document.getElementById('PropRotationRect')
+			let PropRotX  			= document.getElementById('PropRotXRect')
+			let PropRotY  			= document.getElementById('PropRotYRect')
+			let PropSkewY  			= document.getElementById('PropSkewYRect')
+			let PropSkewX  			= document.getElementById('PropSkewXRect')
+			let PropRX  				= document.getElementById('PropRXRect')
+			let PropRY  				= document.getElementById('PropRYRect')
+			let PropFill  			= document.getElementById('PropFillRect')
+			let PropStrokeSize  = document.getElementById('PropStrokeSizeRect')
+			let PropStrokergba  = document.getElementById('PropStrokergbaRect')
+
+			PropWidth.setAttribute(		'index', i)
+			PropHeight.setAttribute(	'index', i)
+			PropXpos.setAttribute(		'index', i)
+			PropYpos.setAttribute(		'index', i)
+			PropRotation.setAttribute('index', i)
+			PropRotX.setAttribute(		'index', i)
+			PropRotY.setAttribute(		'index', i)
+			PropSkewY.setAttribute(		'index', i)
+			PropSkewX.setAttribute(		'index', i)
+			PropRX.setAttribute(			'index', i)
+			PropRY.setAttribute(			'index', i)
+			PropFill.setAttribute(		'index', i)
+			PropStrokeSize.setAttribute('index', i)
+			PropStrokergba.setAttribute('index', i)
+		
+
+			PropDesc.innerHTML = 'ID =  ' + i + '<br> Type = ' + Things[i].type + '<br><br>'
+
+			if(!Things[i]['functions'])
+			{
+				Things[i]['functions'] = {}
+							
+				PropWidth.value  = Things[i].x2 -Things[i].x1
+				PropHeight.value = Things[i].y2 -Things[i].y1
+
+			}else{
+				// console.log('defined!!!! , no ples redefine ')
+				if(Things[i]['functions']['width'])
+				{
+					console.log('it works' + Things[i]['functions']['width'].str)
+					PropWidth.value = Things[i]['functions']['width'].str
+				}
+
+			}
+			if(Things[i]['functions'])
+			{
+				console.log(Things[i]['functions'])
+				PropWidth			.value = ""
+				PropHeight		.value = ""
+				PropXpos			.value = ""
+				PropYpos			.value = ""
+				PropRotation	.value = ""
+				PropRotX			.value = ""
+				PropRotY			.value = ""
+				PropSkewY			.value = ""
+				PropSkewX			.value = ""
+				PropRX				.value = ""
+				PropRY				.value = ""
+				PropFill			.value = ""
+				PropStrokeSize.value = ""
+				PropStrokergba.value = ""
+
+				if(Things?.[i]?.['functions'].width?.str	)
+						PropWidth			.value = Things?.[i]?.['functions'].width?.str	
+				if(Things?.[i]?.['functions'].height?.str  	)
+						PropHeight		.value = Things?.[i]?.['functions'].height?.str  	
+				if(Things?.[i]?.['functions'].xpos?.str  	)
+						PropXpos			.value = Things?.[i]?.['functions'].xpos?.str  	
+				if(Things?.[i]?.['functions'].ypos?.str  	)
+						PropYpos			.value = Things?.[i]?.['functions'].ypos?.str  	
+				if(Things?.[i]?.['functions'].rotation?.str  	)
+						PropRotation	.value = Things?.[i]?.['functions'].rotation?.str  	
+				if(Things?.[i]?.['functions'].rotX?.str  	)
+						PropRotX			.value = Things?.[i]?.['functions'].rotX?.str  	
+				if(Things?.[i]?.['functions'].rotY?.str  	)
+						PropRotY			.value = Things?.[i]?.['functions'].rotY?.str  	
+				if(Things?.[i]?.['functions'].skewY?.str  	)
+						PropSkewY			.value = Things?.[i]?.['functions'].skewY?.str  	
+				if(Things?.[i]?.['functions'].skewX?.str  	)
+						PropSkewX			.value = Things?.[i]?.['functions'].skewX?.str  	
+				if(Things?.[i]?.['functions'].rx?.str  	)
+						PropRX				.value = Things?.[i]?.['functions'].rx?.str  	
+				if(Things?.[i]?.['functions'].ry?.str  	)
+						PropRY				.value = Things?.[i]?.['functions'].ry?.str  	
+				if(Things?.[i]?.['functions'].fill?.str  	)
+						PropFill			.value = Things?.[i]?.['functions'].fill?.str  	
+				if(Things?.[i]?.['functions'].strokesize?.str  	)
+						PropStrokeSize.value = Things?.[i]?.['functions'].strokesize?.str  	
+				if(Things?.[i]?.['functions'].strokergba?.str  		)
+						PropStrokergba.value = Things?.[i]?.['functions'].strokergba?.str  		}
+
+
+
+
+
+}
+function exportfile(){
+	// function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + '<svg>' + encodeURIComponent(svgy1.innerHTML)+ '</svg>');
+  element.setAttribute('download', 'save.svg');
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+// }
+
+
+}
+function move() {
+
+	for (var i = 0; i < Things.length; i++) {
+		if(Things[i].startref >= 0 )
+		{
+			Things[i].x1 = SnapPoint[Things[i].startref].x
+			Things[i].y1 = SnapPoint[Things[i].startref].y
+			if(Things[i].type == 'rectangle')
+					updateRect(Things[i]) 
+			if(Things[i].type == 'line')
+				updateLine(Things[i]) 
+			if(Things[i].type == 'text')
+				updateText(Things[i]) 
+		}
+		if(Things[i].endref >0 )
+		{
+			Things[i].x2 = SnapPoint[Things[i].endref].x
+			Things[i].y2 = SnapPoint[Things[i].endref].y
+			if(Things[i].type == 'rectangle')
+				updateRect(Things[i]) 
+			if(Things[i].type == 'line')
+				updateLine(Things[i])  
+			if(Things[i].type == 'text')
+				updateText(Things[i]) 			
+		}		
+	}
+
+}
+
+setInterval( function(){loop()} ,1000/60);
+</script>
+</html>
