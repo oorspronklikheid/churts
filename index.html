@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title> Churts : Customized Heterogeneous Unitary Responsive Transforms. </title>
+	<title>Churts : Customized Heterogeneous Unitary Responsive Transforms.</title>
 </head>
 <style type="text/css">
 		* { margin: 0; padding: 0;}
@@ -35,7 +35,9 @@
 	            	<br>
 								<button id='ipress' onclick='exportfile()'>export</button> <br> 
 								<button id='toolmode' onclick='nexttool()'>line</button> <br><br>
-								<input type="number" id='Duplicate' min=1 max=250>
+								<button id='toolmode' onclick='save()'>save/something</button> <br>
+								<button id='toolmode' onclick='load()'>load/something</button> <br>
+								<input type="number" id='Duplicate' min=1 max=250> <br>
 								Object Properties : <br>
 								<p id=PropDesc></p>
 
@@ -349,7 +351,7 @@ let init = {x:-1 , y:-1}
 let initR = {x:-1 , y:-1}
 let end  = {x:-1 , y:-1}
 let Mousepos = {x:-1 , y:-1} 
-let tool = 'line'
+let tool = 'nan'
 let	mode = 0
 let currentSnapto = - 1
 let MouseThing ; 
@@ -590,12 +592,12 @@ svgy1.addEventListener("click", (event) => {
 		// 	dataInputs = [];
 		
 	  for (var i = 0; i < Things.length; i++) {
-	  	console.log(Things[i].type )
+	  	// console.log(Things[i].type )
 			if(Things[i].type == 'rectangle')
 			{	
 				if(event.target == Things[i].SVG.firstChild )
 		  	{
-					console.log('rect')
+					// console.log('rect')
 					TextProperties.style.display = 'none'
 					RectProperties.style.display = 'block'
 		  		updatePropertiesUIRect(i)	  				
@@ -605,7 +607,7 @@ svgy1.addEventListener("click", (event) => {
 			{	
 				if(event.target == Things[i].SVG.firstChild )
 		  	{
-					console.log('texted')
+					// console.log('texted')
 					TextProperties.style.display = 'block'
 					RectProperties.style.display = 'none'
 		  		updatePropertiesUIText(i)	  				
@@ -617,11 +619,6 @@ svgy1.addEventListener("click", (event) => {
 
 	if(tool == 'clone')
 	{
-	// for (var j = 0; j < dataInputs.length; j++) {
-	// 			dataInputs[j].SVG.remove() 
-	// 		}
-	// 		dataInputs = [];
-		
 	  for (var i = 0; i < Things.length; i++) {
 
 			if(Things[i].type == 'rectangle')
@@ -629,7 +626,8 @@ svgy1.addEventListener("click", (event) => {
 				if(event.target == Things[i].SVG.firstChild )
 		  	{
 
-		  		if(Things[i].clones)
+		  	
+		  		}	if(Things[i].clones)
 	  			for (var j = 0; j < Things[i].clones.length; j++) {
 	  				Things[i].clones[j].remove()
 	  			}
@@ -648,8 +646,7 @@ svgy1.addEventListener("click", (event) => {
 						updateRectClones(Things[i]) 
 
 						svgy1.appendChild(cloneSVG)					
-		  		}
-	  		}
+	  			}
 	  	}
 			if(Things[i].type == 'text')
 			{	
@@ -917,8 +914,6 @@ function updateSnapPoints()
 				if(Things[i].type	 == 'rectangle')
 				{
 
-					// console.log('Updating '+Things[i].SnapPointList[1])
-					// console.log(SnapPoint[Things[i].SnapPointList[1] ])
 					SnapPoint[Things[i].SnapPointList[0] ].x = Things[i].x1
 					SnapPoint[Things[i].SnapPointList[0] ].y = Things[i].y1
 					updateCircle(SnapPoint[Things[i].SnapPointList[0] ]) 
@@ -1048,34 +1043,7 @@ function updateRectClones(Rect)
 	}
 
 }
-	// function updateRect(Rect) 
-	// {
-	// 		Rect.SVG.firstChild.setAttribute("x" ,  Math.min(Rect.x1,Rect.x2) )
-	// 		Rect.SVG.firstChild.setAttribute("y" ,  Math.min(Rect.y1,Rect.y2) )
-	// 		Rect.SVG.firstChild.setAttribute("width" ,  Math.abs(Rect.x2 - Rect.x1)) 
-	// 		Rect.SVG.firstChild.setAttribute("height",  Math.abs(Rect.y2 - Rect.y1))
 
-	// 		Rect.SVG.firstChild.style.fill = Rect.fill 
-			
-	// 		Rect.SVG.firstChild.style.strokeWidth =  Rect.strokesize 
-	// 		Rect.SVG.firstChild.style.stroke = Rect.stroke
-
-	// 		Rect.SVG.firstChild.setAttribute("rx" ,  Rect.rx )
-	// 		Rect.SVG.firstChild.setAttribute("ry" ,  Rect.ry )
-	    
-
-	// 		let rot = "rotate(" +  Rect.rotate + ' ' + (Rect.x1 + Rect.x2)/2 + ' ' + (Rect.y1 + Rect.y2)/2 + ")"
-	// 		let skew = ''
-
-	// 		if(Rect.skewX)
-	// 		 skew += ` translate(${(Rect.x1 + Rect.x2)/2}, ${(Rect.y1 + Rect.y2)/2 }) skewX(${Rect.skewX} )  translate(${-1*(Rect.x1 + Rect.x2)/2}, ${-1*(Rect.y1 + Rect.y2)/2 })`
-	// 		if(Rect.skewY)
-	// 		 skew += ` translate(${(Rect.x1 + Rect.x2)/2}, ${(Rect.y1 + Rect.y2)/2 }) skewY(${Rect.skewY}) translate(${-1*(Rect.x1 + Rect.x2)/2}, ${-1*(Rect.y1 + Rect.y2)/2 })`
-
-	// 		Rect.SVG.firstChild.setAttribute("transform", rot+skew )
-	// 		// console.log(Rect)
-
-	// }
 function updateTextClones(Text) 
 {
 		const t = Date.now();
@@ -1154,6 +1122,11 @@ function updateRect(Rect)
 		Rect.SVG.firstChild.style.strokeWidth =  Rect.strokesize 
 		Rect.SVG.firstChild.style.stroke = Rect.stroke
 
+		if(!Rect.rx )
+			Rect.rx = 0 
+		if(!Rect.ry )
+			Rect.ry = 0 
+
 		Rect.SVG.firstChild.setAttribute("rx" ,  Rect.rx )
 		Rect.SVG.firstChild.setAttribute("ry" ,  Rect.ry )
     	
@@ -1202,6 +1175,202 @@ function updateLine(Line)
 		Line.SVG.setAttribute('y1' , Line.y1)
 		Line.SVG.setAttribute('x2' , Line.x2)
 		Line.SVG.setAttribute('y2' , Line.y2)
+}
+
+
+function saveToServer() {
+
+var url = new URL(window.location.href) ; 
+// console.log(url)
+ var requesturl = './upload.php'
+ console.log(requesturl)
+ fetch(requesturl, {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(savedDatastr)
+})
+.then(response => response.json())
+.then(data => updateURL(data))
+.catch(error => console.error('Error:', error));
+}
+
+function updateURL(data)
+{
+
+    console.log(window.location.href)
+    var url = new URL(window.location.href) ;
+    url.searchParams.delete('things') 
+    url.searchParams.delete('snaps') 
+    url.searchParams.append('id' , data)
+    url.searchParams.set('id' , data)
+    console.log(url)
+    // window.location.href = url.href
+    modifyUrl('Churts : Customized Heterogeneous Unitary Responsive Transforms.', url.href)
+}
+
+function loadFromURL()
+{
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    // console.log(urlParams);
+    // if(urlParams.get('GCODE'))
+    // {
+    //  editor.setValue(urlParams.get('GCODE'));
+    // }
+
+    if(urlParams.get('id'))
+    {
+        console.log('getting from server')
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET",  './get.php?File=' + urlParams.get('id'), false ); // false for synchronous request
+        xmlHttp.send( null );
+        // console.log(JSON.parse(xmlHttp.responseText))
+        return JSON.parse(xmlHttp.responseText)
+        // editor.setValue(xmlHttp.responseText)
+        // return xmlHttp.responseText
+
+    }
+}
+
+
+function modifyUrl(title, url) {
+ if (typeof (history.pushState) != "undefined") {
+  var obj = {
+   Title: title,
+   Url: url
+  };
+  history.pushState(obj, obj.Title, obj.Url);
+ }
+}
+
+var savedThingsstr = '' 
+var savedSnapsstr  ='' 
+let savedDatastr = '' 
+function save() 
+{
+
+
+	savedDatastr =  JSON.stringify({ Things:Things , Snaps:SnapPoint})
+
+	for (var i = 0; i < Things.length; i++) {
+		Things[i].SVG.remove()
+		if(Things[i].clones)
+			for (var j = 0; j < Things[i].clones.length; j++) {
+				Things[i].clones[j].remove()
+			}
+		Things[i].clones = []; 
+	}
+	savedThingsstr = JSON.stringify(Things); 
+	console.log('savedThingsstr ' , savedThingsstr)
+	Things = []
+
+	savedSnapsstr = JSON.stringify(SnapPoint); 
+	console.log('savedSnapsstr ' , savedSnapsstr)
+
+	for (var i = 0; i < SnapPoint.length; i++) 
+	{
+		SnapPoint[i].SVG.remove()
+	}
+	SnapPoint = []
+
+	let URL =window.location.href
+	if(URL.indexOf('?') > 0 ) 
+	{
+		URL = URL.substring(0, URL.indexOf('?'))
+
+	}
+
+
+	saveToServer() 
+	URL += `?snaps=${encodeURIComponent(savedSnapsstr)}&things=${encodeURIComponent(savedThingsstr)}`
+	// modifyUrl('Churts : Customized Heterogeneous Unitary Responsive Transforms.', URL)
+	return 
+}
+
+function load() 
+{
+  
+
+
+
+  let stuff = loadFromURL() 
+  if(!stuff)
+	{
+	 	return 
+	}
+
+  SnapPoint = stuff['Snaps']
+	Things    = stuff['Things'] 
+  // return 
+	// let URL =window.location.href
+	// if(URL.indexOf('?things') > 0 ) 
+	// {
+	// 	URL = URL.substring(URL.indexOf('?'), URL.length)
+	// 	const urlParams = new URLSearchParams(URL);
+
+	// 	savedThingsstr = decodeURIComponent(urlParams.get('things'))
+	// 	savedSnapsstr  = decodeURIComponent(urlParams.get('snaps'))
+
+	// }else
+	// {
+	// 	return 
+	// }
+
+
+	console.log(savedThingsstr )
+	console.log(savedSnapsstr)
+
+	// SnapPoint = JSON.parse(savedSnapsstr);
+	for (var i = 0; i < SnapPoint.length; i++) 
+	{
+		svgy1.insertAdjacentHTML('beforeend' , '<circle cx="' + SnapPoint[i].x + '" cy="' + SnapPoint[i].y + 
+											 '" r="6" stroke="#eeeeeeff" stroke-width="2" fill="#AA50FAFF" />')
+		SnapPoint[i].SVG = svgy1.lastChild
+	}
+	console.log(SnapPoint)
+
+
+	// Things = JSON.parse(savedThingsstr);
+	for (var i = 0; i < Things.length; i++) 
+	{
+		const Thing = Things[i] 
+			let ThingSVG = svgy1.lastChild
+			if(Thing.type = "rectangle")
+			{
+				svgy1.insertAdjacentHTML('beforeend' , '<g><rect x="' + Math.min(Things[i].x1 , Things[i].x2) 
+														+ '" y="' +  Math.min(Things[i].y2 , Things[i].y1 )
+														+ '" width="' + Math.abs(Things[i].x2 - Things[i].x1 )
+														+ '" height="' + Math.abs(Things[i].y2 - Things[i].y1 )
+														+ '" style="stroke:rgb(100,100,100);stroke-width:1;fill:rgba(0,100,100,0.05)" /></g>')
+				ThingSVG = svgy1.lastChild
+				Things[i].SVG = ThingSVG
+			}
+			for(const param in Thing.functions){
+				
+				const f = new Function('t , n , data' , 'return ' + Things[i]['functions'][param]['str'] )
+				Things[i]['functions'][param]['f'] = f
+				
+			}
+
+			for (var k = 0; k < Thing.clones.length; k++) 
+  		{
+				const cloneSVG = ThingSVG.cloneNode(true);
+					
+				Things[i].clones[k] = cloneSVG
+				// updateRectClones(Things[i]) 
+				svgy1.appendChild(cloneSVG)					
+			}
+			// Things[i].SVG = ThingSVG
+
+	}
+
+
+	// console.log(Things)
+	return 
 }
 
 function nexttool() 
@@ -1336,7 +1505,7 @@ function updatePropertiesUIRect(i) {
 			}
 			if(Things[i]['functions'])
 			{
-				console.log(Things[i]['functions'])
+				// console.log(Things[i]['functions'])
 				PropWidth			.value = ""
 				PropHeight		.value = ""
 				PropXpos			.value = ""
@@ -1382,9 +1551,6 @@ function updatePropertiesUIRect(i) {
 						PropStrokergba.value = Things?.[i]?.['functions'].strokergba?.str  		}
 
 
-
-
-
 }
 function exportfile(){
 	// function download(filename, text) {
@@ -1400,10 +1566,9 @@ function exportfile(){
   document.body.removeChild(element);
 // }
 
-
 }
 function move() {
-
+	 // return  
 	for (var i = 0; i < Things.length; i++) {
 		if(Things[i].startref >= 0 )
 		{
@@ -1430,7 +1595,7 @@ function move() {
 	}
 
 }
-
+ load() 
 setInterval( function(){loop()} ,1000/60);
 </script>
 </html>
