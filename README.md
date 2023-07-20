@@ -18,3 +18,5 @@ Demo: https://youtu.be/WNJ-UewGN-o
 * Something to make labelling axes easier
 * Somthing on mouse hover 
 * API-able.
+* possible datastorage/management with encryption.
+* logins?!
